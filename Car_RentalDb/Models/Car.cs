@@ -12,8 +12,8 @@
         public string IsAvailable { get; set; }
 
 
-        public Staff Staffs { get; set; }
-        public Location Locations { get; set; }
+        public Staff Staff { get; set; }
+        public Location Location { get; set; }
         public ICollection<Rental> Rentals { get; set; }
     }
 }

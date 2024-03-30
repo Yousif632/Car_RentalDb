@@ -13,6 +13,5 @@
 
         public Car Car { get; set; }
         public Customer customer { get; set; }
-        public ICollection<Rental> Rentals { get; set; }
     }
 }

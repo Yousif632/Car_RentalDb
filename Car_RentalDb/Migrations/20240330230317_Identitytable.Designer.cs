@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Car_RentalDb.Migrations
 {
     [DbContext(typeof(Car_RentalDbContext))]
-    [Migration("20240330181844_Car")]
-    partial class Car
+    [Migration("20240330230317_Identitytable")]
+    partial class Identitytable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -141,6 +141,42 @@ namespace Car_RentalDb.Migrations
                     b.ToTable("Car");
                 });
 
+            modelBuilder.Entity("Car_RentalDb.Models.Customer", b =>
+                {
+                    b.Property<int>("CustomerId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CustomerId"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PhoneNumber")
+                        .HasColumnType("int");
+
+                    b.Property<string>("identitfication")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CustomerId");
+
+                    b.ToTable("Customer");
+                });
+
             modelBuilder.Entity("Car_RentalDb.Models.Location", b =>
                 {
                     b.Property<int>("LocationId")
@@ -203,12 +239,6 @@ namespace Car_RentalDb.Migrations
                     b.Property<int>("Insurance_Charge")
                         .HasColumnType("int");
 
-                    b.Property<int?>("RentalId1")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("StaffId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("Start_Date")
                         .HasColumnType("datetime2");
 
@@ -216,9 +246,7 @@ namespace Car_RentalDb.Migrations
 
                     b.HasIndex("CarId");
 
-                    b.HasIndex("RentalId1");
-
-                    b.HasIndex("StaffId");
+                    b.HasIndex("CustomerId");
 
                     b.ToTable("Rental");
                 });
@@ -254,9 +282,6 @@ namespace Car_RentalDb.Migrations
                     b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Rental")
-                        .HasColumnType("int");
 
                     b.HasKey("StaffId");
 
@@ -402,40 +427,40 @@ namespace Car_RentalDb.Migrations
 
             modelBuilder.Entity("Car_RentalDb.Models.Car", b =>
                 {
-                    b.HasOne("Car_RentalDb.Models.Location", "Locations")
-                        .WithMany("cars")
+                    b.HasOne("Car_RentalDb.Models.Location", "Location")
+                        .WithMany("Car")
                         .HasForeignKey("LocationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Car_RentalDb.Models.Staff", "Staffs")
+                    b.HasOne("Car_RentalDb.Models.Staff", "Staff")
                         .WithMany("Cars")
                         .HasForeignKey("StaffId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Locations");
+                    b.Navigation("Location");
 
-                    b.Navigation("Staffs");
+                    b.Navigation("Staff");
                 });
 
             modelBuilder.Entity("Car_RentalDb.Models.Rental", b =>
                 {
-                    b.HasOne("Car_RentalDb.Models.Car", "Cars")
+                    b.HasOne("Car_RentalDb.Models.Car", "Car")
                         .WithMany("Rentals")
                         .HasForeignKey("CarId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Car_RentalDb.Models.Rental", null)
-                        .WithMany("Rentals")
-                        .HasForeignKey("RentalId1");
+                    b.HasOne("Car_RentalDb.Models.Customer", "customer")
+                        .WithMany("Rental")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("Car_RentalDb.Models.Staff", null)
-                        .WithMany("Rentals")
-                        .HasForeignKey("StaffId");
+                    b.Navigation("Car");
 
-                    b.Navigation("Cars");
+                    b.Navigation("customer");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -494,21 +519,19 @@ namespace Car_RentalDb.Migrations
                     b.Navigation("Rentals");
                 });
 
-            modelBuilder.Entity("Car_RentalDb.Models.Location", b =>
+            modelBuilder.Entity("Car_RentalDb.Models.Customer", b =>
                 {
-                    b.Navigation("cars");
+                    b.Navigation("Rental");
                 });
 
-            modelBuilder.Entity("Car_RentalDb.Models.Rental", b =>
+            modelBuilder.Entity("Car_RentalDb.Models.Location", b =>
                 {
-                    b.Navigation("Rentals");
+                    b.Navigation("Car");
                 });
 
             modelBuilder.Entity("Car_RentalDb.Models.Staff", b =>
                 {
                     b.Navigation("Cars");
-
-                    b.Navigation("Rentals");
                 });
 #pragma warning restore 612, 618
         }
