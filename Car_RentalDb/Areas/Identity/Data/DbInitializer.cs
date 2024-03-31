@@ -16,7 +16,7 @@ namespace Car_RentalDb.Areas.Identity.Data
             }
             var cars = new Car[]
           {
-                new Car {StaffId=204,LocationId=21,Model= "Toyota Hiux",Year= 2015, DailyRate= 590, FuelType= "Diesel",IsAvailable= "No"}
+                new Car {StaffID=204,LocationID=21,Model= "Toyota Hiux",Year= 2015, DailyRate= 590, FuelType= "Diesel",IsAvailable= "No"}
           };
             foreach (Car c in cars)
             {
@@ -31,6 +31,26 @@ namespace Car_RentalDb.Areas.Identity.Data
             foreach (Customer c in customers)
             {
                 context.Customer.Add(c);
+            }
+            context.SaveChanges();
+
+            var locations = new Location[]
+        {
+                new Location {Address="789 Dominion Road, Mount Eden, Auckland",City= "Auckland",Zip=1041,Country="New Zealand",OpeningHours= "9am",ClosingHours= "6pm" }
+        };
+            foreach (Car c in cars)
+            {
+                context.Car.Add(c);
+            }
+            context.SaveChanges();
+
+            var staff = new Staff[]
+        {
+                new Staff {Name= "Sam",LastName="Anderson",Email="SamAnderson@yahoo.com",Phone=0213768901,Active="Yes",Address= "789 Albert Street, City Centre, Auckland"}
+        };
+            foreach (Car c in cars)
+            {
+                context.Car.Add(c);
             }
             context.SaveChanges();
         }

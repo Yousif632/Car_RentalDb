@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Car_RentalDb.Migrations
 {
     [DbContext(typeof(Car_RentalDbContext))]
-    [Migration("20240330230317_Identitytable")]
-    partial class Identitytable
+    [Migration("20240331000147_identitytable")]
+    partial class identitytable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -46,13 +46,11 @@ namespace Car_RentalDb.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -215,19 +213,19 @@ namespace Car_RentalDb.Migrations
 
             modelBuilder.Entity("Car_RentalDb.Models.Rental", b =>
                 {
-                    b.Property<int>("RentalId")
+                    b.Property<int>("RentalID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RentalId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RentalID"));
 
                     b.Property<int>("Booking_Rate")
                         .HasColumnType("int");
 
-                    b.Property<int>("CarId")
+                    b.Property<int>("CarID")
                         .HasColumnType("int");
 
-                    b.Property<int>("CustomerId")
+                    b.Property<int>("CustomerID")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("End_Date")
@@ -242,11 +240,11 @@ namespace Car_RentalDb.Migrations
                     b.Property<DateTime>("Start_Date")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("RentalId");
+                    b.HasKey("RentalID");
 
-                    b.HasIndex("CarId");
+                    b.HasIndex("CarID");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("CustomerID");
 
                     b.ToTable("Rental");
                 });
@@ -428,7 +426,7 @@ namespace Car_RentalDb.Migrations
             modelBuilder.Entity("Car_RentalDb.Models.Car", b =>
                 {
                     b.HasOne("Car_RentalDb.Models.Location", "Location")
-                        .WithMany("Car")
+                        .WithMany("Cars")
                         .HasForeignKey("LocationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -448,19 +446,19 @@ namespace Car_RentalDb.Migrations
                 {
                     b.HasOne("Car_RentalDb.Models.Car", "Car")
                         .WithMany("Rentals")
-                        .HasForeignKey("CarId")
+                        .HasForeignKey("CarID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Car_RentalDb.Models.Customer", "customer")
-                        .WithMany("Rental")
-                        .HasForeignKey("CustomerId")
+                    b.HasOne("Car_RentalDb.Models.Customer", "Customer")
+                        .WithMany("Rentals")
+                        .HasForeignKey("CustomerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Car");
 
-                    b.Navigation("customer");
+                    b.Navigation("Customer");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -521,12 +519,12 @@ namespace Car_RentalDb.Migrations
 
             modelBuilder.Entity("Car_RentalDb.Models.Customer", b =>
                 {
-                    b.Navigation("Rental");
+                    b.Navigation("Rentals");
                 });
 
             modelBuilder.Entity("Car_RentalDb.Models.Location", b =>
                 {
-                    b.Navigation("Car");
+                    b.Navigation("Cars");
                 });
 
             modelBuilder.Entity("Car_RentalDb.Models.Staff", b =>

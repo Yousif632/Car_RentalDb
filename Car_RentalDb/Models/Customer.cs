@@ -10,6 +10,6 @@
         public int PhoneNumber { get; set; }
         public string identitfication { get; set; }
 
-        public ICollection<Rental> Rental { get; set; }
+        public ICollection<Rental> Rentals { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Car_RentalDb.Migrations
 {
     /// <inheritdoc />
-    public partial class Identitytable : Migration
+    public partial class identitytable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -30,8 +30,8 @@ namespace Car_RentalDb.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    FirstName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -247,10 +247,10 @@ namespace Car_RentalDb.Migrations
                 name: "Rental",
                 columns: table => new
                 {
-                    RentalId = table.Column<int>(type: "int", nullable: false)
+                    RentalID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CarId = table.Column<int>(type: "int", nullable: false),
-                    CustomerId = table.Column<int>(type: "int", nullable: false),
+                    CarID = table.Column<int>(type: "int", nullable: false),
+                    CustomerID = table.Column<int>(type: "int", nullable: false),
                     Start_Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     End_Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Booking_Rate = table.Column<int>(type: "int", nullable: false),
@@ -259,16 +259,16 @@ namespace Car_RentalDb.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Rental", x => x.RentalId);
+                    table.PrimaryKey("PK_Rental", x => x.RentalID);
                     table.ForeignKey(
-                        name: "FK_Rental_Car_CarId",
-                        column: x => x.CarId,
+                        name: "FK_Rental_Car_CarID",
+                        column: x => x.CarID,
                         principalTable: "Car",
                         principalColumn: "CarId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Rental_Customer_CustomerId",
-                        column: x => x.CustomerId,
+                        name: "FK_Rental_Customer_CustomerID",
+                        column: x => x.CustomerID,
                         principalTable: "Customer",
                         principalColumn: "CustomerId",
                         onDelete: ReferentialAction.Cascade);
@@ -324,14 +324,14 @@ namespace Car_RentalDb.Migrations
                 column: "StaffId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Rental_CarId",
+                name: "IX_Rental_CarID",
                 table: "Rental",
-                column: "CarId");
+                column: "CarID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Rental_CustomerId",
+                name: "IX_Rental_CustomerID",
                 table: "Rental",
-                column: "CustomerId");
+                column: "CustomerID");
         }
 
         /// <inheritdoc />

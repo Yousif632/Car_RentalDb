@@ -2,9 +2,9 @@
 {
     public class Car
     {
-        public int CarId { get; set; }
-        public int StaffId { get; set; }
-        public int LocationId { get; set; }
+        public int CarID { get; set; }
+        public int StaffID { get; set; }
+        public int LocationID { get; set; }
         public string Model { get; set; }
         public int Year { get; set; }
         public int DailyRate { get; set; }
