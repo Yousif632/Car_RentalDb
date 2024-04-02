@@ -74,7 +74,7 @@ namespace Car_RentalDb.Migrations
                 name: "Location",
                 columns: table => new
                 {
-                    LocationId = table.Column<int>(type: "int", nullable: false)
+                    LocationID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     City = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -85,7 +85,7 @@ namespace Car_RentalDb.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Location", x => x.LocationId);
+                    table.PrimaryKey("PK_Location", x => x.LocationID);
                 });
 
             migrationBuilder.CreateTable(
@@ -97,7 +97,7 @@ namespace Car_RentalDb.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Phone = table.Column<int>(type: "int", nullable: false),
                     Active = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -216,10 +216,10 @@ namespace Car_RentalDb.Migrations
                 name: "Car",
                 columns: table => new
                 {
-                    CarId = table.Column<int>(type: "int", nullable: false)
+                    CarID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    StaffId = table.Column<int>(type: "int", nullable: false),
-                    LocationId = table.Column<int>(type: "int", nullable: false),
+                    StaffID = table.Column<int>(type: "int", nullable: false),
+                    LocationID = table.Column<int>(type: "int", nullable: false),
                     Model = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Year = table.Column<int>(type: "int", nullable: false),
                     DailyRate = table.Column<int>(type: "int", nullable: false),
@@ -228,16 +228,16 @@ namespace Car_RentalDb.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Car", x => x.CarId);
+                    table.PrimaryKey("PK_Car", x => x.CarID);
                     table.ForeignKey(
-                        name: "FK_Car_Location_LocationId",
-                        column: x => x.LocationId,
+                        name: "FK_Car_Location_LocationID",
+                        column: x => x.LocationID,
                         principalTable: "Location",
-                        principalColumn: "LocationId",
+                        principalColumn: "LocationID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Car_Staff_StaffId",
-                        column: x => x.StaffId,
+                        name: "FK_Car_Staff_StaffID",
+                        column: x => x.StaffID,
                         principalTable: "Staff",
                         principalColumn: "StaffId",
                         onDelete: ReferentialAction.Cascade);
@@ -264,7 +264,7 @@ namespace Car_RentalDb.Migrations
                         name: "FK_Rental_Car_CarID",
                         column: x => x.CarID,
                         principalTable: "Car",
-                        principalColumn: "CarId",
+                        principalColumn: "CarID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Rental_Customer_CustomerID",
@@ -314,14 +314,14 @@ namespace Car_RentalDb.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Car_LocationId",
+                name: "IX_Car_LocationID",
                 table: "Car",
-                column: "LocationId");
+                column: "LocationID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Car_StaffId",
+                name: "IX_Car_StaffID",
                 table: "Car",
-                column: "StaffId");
+                column: "StaffID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Rental_CarID",

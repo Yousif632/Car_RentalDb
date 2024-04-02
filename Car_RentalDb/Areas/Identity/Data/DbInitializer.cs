@@ -38,21 +38,33 @@ namespace Car_RentalDb.Areas.Identity.Data
         {
                 new Location {Address="789 Dominion Road, Mount Eden, Auckland",City= "Auckland",Zip=1041,Country="New Zealand",OpeningHours= "9am",ClosingHours= "6pm" }
         };
-            foreach (Car c in cars)
+            foreach (Location l in locations)
             {
-                context.Car.Add(c);
+                context.Car.Add(l);
             }
             context.SaveChanges();
 
-            var staff = new Staff[]
+            var rentals = new Rental[]
+  {
+                new Rental {CarID=12}
+  };
+            foreach (Rental r in rentals)
+            {
+                context.Car.Add(r);
+            }
+            context.SaveChanges();
+
+            var staffs = new Staff[]
         {
                 new Staff {Name= "Sam",LastName="Anderson",Email="SamAnderson@yahoo.com",Phone=0213768901,Active="Yes",Address= "789 Albert Street, City Centre, Auckland"}
         };
-            foreach (Car c in cars)
+            foreach (Staff s in staffs)
             {
-                context.Car.Add(c);
+                context.Car.Add(s);
             }
             context.SaveChanges();
+
+       
         }
     }
 }

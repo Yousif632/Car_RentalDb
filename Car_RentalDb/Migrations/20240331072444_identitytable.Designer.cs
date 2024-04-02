@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Car_RentalDb.Migrations
 {
     [DbContext(typeof(Car_RentalDbContext))]
-    [Migration("20240331000147_identitytable")]
+    [Migration("20240331072444_identitytable")]
     partial class identitytable
     {
         /// <inheritdoc />
@@ -100,11 +100,11 @@ namespace Car_RentalDb.Migrations
 
             modelBuilder.Entity("Car_RentalDb.Models.Car", b =>
                 {
-                    b.Property<int>("CarId")
+                    b.Property<int>("CarID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CarId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CarID"));
 
                     b.Property<int>("DailyRate")
                         .HasColumnType("int");
@@ -117,24 +117,24 @@ namespace Car_RentalDb.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("LocationId")
+                    b.Property<int>("LocationID")
                         .HasColumnType("int");
 
                     b.Property<string>("Model")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("StaffId")
+                    b.Property<int>("StaffID")
                         .HasColumnType("int");
 
                     b.Property<int>("Year")
                         .HasColumnType("int");
 
-                    b.HasKey("CarId");
+                    b.HasKey("CarID");
 
-                    b.HasIndex("LocationId");
+                    b.HasIndex("LocationID");
 
-                    b.HasIndex("StaffId");
+                    b.HasIndex("StaffID");
 
                     b.ToTable("Car");
                 });
@@ -177,11 +177,11 @@ namespace Car_RentalDb.Migrations
 
             modelBuilder.Entity("Car_RentalDb.Models.Location", b =>
                 {
-                    b.Property<int>("LocationId")
+                    b.Property<int>("LocationID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LocationId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LocationID"));
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -206,7 +206,7 @@ namespace Car_RentalDb.Migrations
                     b.Property<int>("Zip")
                         .HasColumnType("int");
 
-                    b.HasKey("LocationId");
+                    b.HasKey("LocationID");
 
                     b.ToTable("Location");
                 });
@@ -277,9 +277,8 @@ namespace Car_RentalDb.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Phone")
+                        .HasColumnType("int");
 
                     b.HasKey("StaffId");
 
@@ -427,13 +426,13 @@ namespace Car_RentalDb.Migrations
                 {
                     b.HasOne("Car_RentalDb.Models.Location", "Location")
                         .WithMany("Cars")
-                        .HasForeignKey("LocationId")
+                        .HasForeignKey("LocationID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Car_RentalDb.Models.Staff", "Staff")
                         .WithMany("Cars")
-                        .HasForeignKey("StaffId")
+                        .HasForeignKey("StaffID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

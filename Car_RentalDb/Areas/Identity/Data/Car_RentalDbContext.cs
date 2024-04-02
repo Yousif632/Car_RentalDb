@@ -20,6 +20,10 @@ public DbSet<Car_RentalDb.Models.Customer> Customer { get; set; } = default!;
 
 public DbSet<Car_RentalDb.Models.Location> Location { get; set; } = default!;
 
+public DbSet<Car_RentalDb.Models.Rental> Rental { get; set; } = default!;
+
+public DbSet<Car_RentalDb.Models.Staff> Staff { get; set; } = default!;
+
 
 }
 public class ApplicationUserEntityConfiguration : IEntityTypeConfiguration<ApplicationUser>
