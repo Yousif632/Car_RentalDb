@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Car_RentalDb.Migrations
 {
     [DbContext(typeof(Car_RentalDbContext))]
-    [Migration("20240331072444_identitytable")]
+    [Migration("20240403013319_identitytable")]
     partial class identitytable
     {
         /// <inheritdoc />

@@ -14,15 +14,6 @@ namespace Car_RentalDb.Areas.Identity.Data
                 return; //DB has been seeded
 
             }
-            var cars = new Car[]
-          {
-                new Car {StaffID=204,LocationID=21,Model= "Toyota Hiux",Year= 2015, DailyRate= 590, FuelType= "Diesel",IsAvailable= "No"}
-          };
-            foreach (Car c in cars)
-            {
-                context.Car.Add(c);
-            }
-            context.SaveChanges();
 
             var customers = new Customer[]
            {
@@ -40,7 +31,7 @@ namespace Car_RentalDb.Areas.Identity.Data
         };
             foreach (Location l in locations)
             {
-                context.Car.Add(l);
+                context.Location.Add(l);
             }
             context.SaveChanges();
 
@@ -50,7 +41,7 @@ namespace Car_RentalDb.Areas.Identity.Data
   };
             foreach (Rental r in rentals)
             {
-                context.Car.Add(r);
+                context.Rental.Add(r);
             }
             context.SaveChanges();
 
@@ -60,11 +51,21 @@ namespace Car_RentalDb.Areas.Identity.Data
         };
             foreach (Staff s in staffs)
             {
-                context.Car.Add(s);
+                context.Staff.Add(s);
             }
             context.SaveChanges();
 
-       
+            var cars = new Car[]
+        {
+                new Car {StaffID=1,LocationID=1,Model= "Toyota Hiux",Year= 2015, DailyRate= 590, FuelType= "Diesel",IsAvailable= "No"}
+        };
+            foreach (Car c in cars)
+            {
+                context.Car.Add(c);
+            }
+            context.SaveChanges();
+
+
         }
     }
 }
