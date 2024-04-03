@@ -72,7 +72,7 @@ namespace Car_RentalDb.Areas.Identity.Pages.Account
         public class InputModel
         {
              [Required]
-            [StringLength(20, ErrorMessage = "The first name field should have a maximum of 100 characters.")]
+            [StringLength(20, ErrorMessage = "The first name field should have a maximum of 20 characters.")]
             [Display(Name = "FirstName")]
             public string FirstName { get; set; }
             /// <summary>
@@ -80,13 +80,19 @@ namespace Car_RentalDb.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [Required]
-            [StringLength(20, ErrorMessage = "The lastname field should have a maximum of 100 characters.")]
+            [StringLength(20, ErrorMessage = "The lastname field should have a maximum of 20 characters.")]
             [Display(Name = "LastName")]
             public string LastName { get; set; }
+           
+            [Required]
+            [StringLength(10, ErrorMessage = "The phone number field should have a maximum of 10 characters.")]
+            [Display(Name = "PhoneNumber")]
+            public string PhoneNumber{ get; set; }
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
+
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
@@ -129,6 +135,7 @@ namespace Car_RentalDb.Areas.Identity.Pages.Account
 
                 user.FirstName = Input.FirstName;
                 user.LastName = Input.LastName;
+                user.PhoneNumber = Input.PhoneNumber;
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);

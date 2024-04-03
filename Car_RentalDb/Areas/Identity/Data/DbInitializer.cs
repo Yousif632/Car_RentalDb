@@ -37,7 +37,17 @@ namespace Car_RentalDb.Areas.Identity.Data
 
             var staffs = new Staff[]
         {
-                new Staff {Name= "Sam",LastName="Anderson",Email="SamAnderson@yahoo.com",Phone=0213768901,Active="Yes",Address= "789 Albert Street, City Centre, Auckland"}
+                new Staff {Name= "Sam",LastName="Anderson",Email="SamAnderson@yahoo.com",Phone=0213768901,Active="Yes",Address= "789 Albert Street Auckland"},
+                new Staff {Name= "Sam",LastName="Anderson",Email="SamAnderson@yahoo.com",Phone=0213768901,Active="Yes",Address= "123 Main Street, Auckland"},
+                new Staff {Name= "Sam",LastName="Anderson",Email="SamAnderson@yahoo.com",Phone=0213768901,Active="Yes",Address= "456 Elm Avenue, Auckland"},
+                new Staff {Name= "Sam",LastName="Anderson",Email="SamAnderson@yahoo.com",Phone=0213768901,Active="Yes",Address= "789 Oak Road, Auckland"},
+                new Staff {Name= "Sam",LastName="Anderson",Email="SamAnderson@yahoo.com",Phone=0213768901,Active="Yes",Address= "101 Pine Lane, Auckland"},
+                new Staff {Name= "Sam",LastName="Anderson",Email="SamAnderson@yahoo.com",Phone=0213768901,Active="Yes",Address= "246 Maple Street, Auckland"},
+                new Staff {Name= "Sam",LastName="Anderson",Email="SamAnderson@yahoo.com",Phone=0213768901,Active="Yes",Address= "802 Cedar Road, Auckland 1081"},
+                new Staff {Name= "Sam",LastName="Anderson",Email="SamAnderson@yahoo.com",Phone=0213768901,Active="Yes",Address= "555 Walnut Lane, Auckland "},
+                new Staff {Name= "Sam",LastName="Anderson",Email="SamAnderson@yahoo.com",Phone=0213768901,Active="Yes",Address= "777 Spruce Street, Auckland 1101"},
+                new Staff {Name= "Sam",LastName="Anderson",Email="SamAnderson@yahoo.com",Phone=0213768901,Active="Yes",Address= "888 Sycamore Avenue, Auckland 1110"},
+                new Staff {Name= "Sam",LastName="Anderson",Email="SamAnderson@yahoo.com",Phone=0213768901,Active="Yes",Address= "222 Willow Way, Auckland 1120"},
         };
             foreach (Staff s in staffs)
             {
@@ -57,7 +67,7 @@ namespace Car_RentalDb.Areas.Identity.Data
 
             var rentals = new Rental[]
   {
-                new Rental {CarID=12}
+                new Rental {CarID=1,CustomerID=1,}
   };
             foreach (Rental r in rentals)
             {
