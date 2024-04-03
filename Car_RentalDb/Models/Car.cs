@@ -2,16 +2,25 @@
 {
     public class Car
     {
+        //primary key child//
         public int CarID { get; set; }
+
+        //FK which is the parent//
         public int StaffID { get; set; }
+        //This is a Fk and parent //
         public int LocationID { get; set; }
+        //This is the model field//
         public string Model { get; set; }
+        //This is the year field//
         public int Year { get; set; }
+        //This is the DailyRate field//
         public int DailyRate { get; set; }
+        //This is the FuelType field//
         public string FuelType { get; set; }
+        //This is the IsAvailable field//
         public string IsAvailable { get; set; }
 
-
+        //This is the Fk//
         public Staff Staff { get; set; }
         public Location Location { get; set; }
         public ICollection<Rental> Rentals { get; set; }
