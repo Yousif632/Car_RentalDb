@@ -35,16 +35,6 @@ namespace Car_RentalDb.Areas.Identity.Data
             }
             context.SaveChanges();
 
-            var rentals = new Rental[]
-  {
-                new Rental {CarID=12}
-  };
-            foreach (Rental r in rentals)
-            {
-                context.Rental.Add(r);
-            }
-            context.SaveChanges();
-
             var staffs = new Staff[]
         {
                 new Staff {Name= "Sam",LastName="Anderson",Email="SamAnderson@yahoo.com",Phone=0213768901,Active="Yes",Address= "789 Albert Street, City Centre, Auckland"}
@@ -64,6 +54,15 @@ namespace Car_RentalDb.Areas.Identity.Data
                 context.Car.Add(c);
             }
             context.SaveChanges();
+
+            var rentals = new Rental[]
+  {
+                new Rental {CarID=12}
+  };
+            foreach (Rental r in rentals)
+            {
+                context.Rental.Add(r);
+            }
 
 
         }
