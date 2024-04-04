@@ -2,12 +2,12 @@
 {
     public class Car
     {
-        //primary key child//
+        //primary key is child//
         public int CarID { get; set; }
 
         //FK which is the parent//
         public int StaffID { get; set; }
-        //This is a Fk and parent //
+        ////
         public int LocationID { get; set; }
         //This is the model field//
         public string Model { get; set; }
