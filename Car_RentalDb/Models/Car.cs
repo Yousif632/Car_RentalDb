@@ -1,4 +1,6 @@
-﻿namespace Car_RentalDb.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Car_RentalDb.Models
 {
     public class Car
     {
@@ -8,17 +10,31 @@
         //FK which is the parent//
         public int StaffID { get; set; }
         ////
+       
         public int LocationID { get; set; }
         //This is the model field//
+        [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
+        [Required]
+        [StringLength(25)]
         public string Model { get; set; }
         //This is the year field//
+
+        [Display(Name = "Year")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy}", ApplyFormatInEditMode = true)]
         public int Year { get; set; }
         //This is the DailyRate field//
+
         public int DailyRate { get; set; }
         //This is the FuelType field//
+        [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
+        [Required]
+        [StringLength(6)]
         public string FuelType { get; set; }
         //This is the IsAvailable field//
+
         public string IsAvailable { get; set; }
+
 
         //This is the Fk//
         public Staff Staff { get; set; }
