@@ -17,9 +17,8 @@ namespace Car_RentalDb.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
-        [Required]
-        [StringLength(15, ErrorMessage = "The address field should have a maximum of 15 characters.")]
-        [Display(Name = "Address")]
+        [Required(ErrorMessage = "Address is required")]
+        [StringLength(100, MinimumLength = 5, ErrorMessage = "Address must be between 5 and 100 characters")]
         public string Address { get; set; }
         [Required]
         [StringLength(10, ErrorMessage = "The phone number field should have a maximum of 10 characters.")]

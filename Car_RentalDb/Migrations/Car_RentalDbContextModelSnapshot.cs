@@ -114,8 +114,8 @@ namespace Car_RentalDb.Migrations
 
                     b.Property<string>("IsAvailable")
                         .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
+                        .HasMaxLength(13)
+                        .HasColumnType("nvarchar(13)");
 
                     b.Property<int>("LocationID")
                         .HasColumnType("int");
@@ -128,8 +128,9 @@ namespace Car_RentalDb.Migrations
                     b.Property<int>("StaffID")
                         .HasColumnType("int");
 
-                    b.Property<int>("Year")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("Year")
+                        .HasMaxLength(4)
+                        .HasColumnType("datetime2");
 
                     b.HasKey("CarID");
 
@@ -150,7 +151,8 @@ namespace Car_RentalDb.Migrations
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -167,6 +169,7 @@ namespace Car_RentalDb.Migrations
                         .HasColumnType("nvarchar(10)");
 
                     b.Property<int>("PhoneNumber")
+                        .HasMaxLength(10)
                         .HasColumnType("int");
 
                     b.Property<string>("identitfication")

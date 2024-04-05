@@ -17,8 +17,12 @@ namespace Car_RentalDb.Models
         [StringLength(20)]
         public string Country { get; set; }
 
+        [DataType(DataType.Time)]
+        [Required]
         public DateTime OpeningHours { get; set; }
 
+        [DataType(DataType.Time)]
+        [Required]
         public DateTime ClosingHours { get; set; }
 
         public ICollection<Car> Cars { get; set; }

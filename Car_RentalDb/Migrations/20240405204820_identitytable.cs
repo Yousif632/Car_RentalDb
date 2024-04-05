@@ -61,8 +61,8 @@ namespace Car_RentalDb.Migrations
                     Name = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PhoneNumber = table.Column<int>(type: "int", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    PhoneNumber = table.Column<int>(type: "int", maxLength: 10, nullable: false),
                     identitfication = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false)
                 },
                 constraints: table =>
@@ -221,10 +221,10 @@ namespace Car_RentalDb.Migrations
                     StaffID = table.Column<int>(type: "int", nullable: false),
                     LocationID = table.Column<int>(type: "int", nullable: false),
                     Model = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
-                    Year = table.Column<int>(type: "int", nullable: false),
+                    Year = table.Column<DateTime>(type: "datetime2", maxLength: 4, nullable: false),
                     DailyRate = table.Column<int>(type: "int", nullable: false),
                     FuelType = table.Column<string>(type: "nvarchar(6)", maxLength: 6, nullable: false),
-                    IsAvailable = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false)
+                    IsAvailable = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false)
                 },
                 constraints: table =>
                 {
