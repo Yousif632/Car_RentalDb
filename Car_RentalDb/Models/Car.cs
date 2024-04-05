@@ -25,6 +25,8 @@ namespace Car_RentalDb.Models
         public int Year { get; set; }
         //This is the DailyRate field//
 
+        [Range(100, 1000)]
+        [DataType(DataType.Currency)]
         public int DailyRate { get; set; }
         //This is the FuelType field//
         [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
@@ -32,7 +34,9 @@ namespace Car_RentalDb.Models
         [StringLength(6)]
         public string FuelType { get; set; }
         //This is the IsAvailable field//
-
+        [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
+        [Required]
+        [StringLength(15)]
         public string IsAvailable { get; set; }
 
 

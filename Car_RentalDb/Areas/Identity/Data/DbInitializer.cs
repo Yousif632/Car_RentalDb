@@ -27,7 +27,7 @@ namespace Car_RentalDb.Areas.Identity.Data
 
             var locations = new Location[]
         {
-                new Location {Address="789 Dominion Road, Mount Eden, Auckland",City= "Auckland",Zip=1041,Country="New Zealand",OpeningHours= "9am",ClosingHours= "6pm" }
+                new Location {Address="789 Dominion Road, Mount Eden, Auckland",City= "Auckland",Zip=1041,Country="New Zealand",OpeningHours=DateTime.Parse( "9:00am"),ClosingHours=DateTime.Parse("6:00pm") }
         };
             foreach (Location l in locations)
             {
