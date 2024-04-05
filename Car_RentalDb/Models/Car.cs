@@ -21,11 +21,9 @@ namespace Car_RentalDb.Models
         public string Model { get; set; }
         //This is the year field//
 
-        [Display(Name = "Year")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy}", ApplyFormatInEditMode = true)]
-        [StringLength(4)]
-        public DateTime Year { get; set; }
+        [Required]
+        [Range(2000,2024,ErrorMessage ="Please enter a vaild model year (From 2000 - 2024")]
+        public int Year { get; set; }
         //This is the DailyRate field//
         //The Validation is that daily rate must be over 100 and not more than 1000//
         [Range(100, 1000)]

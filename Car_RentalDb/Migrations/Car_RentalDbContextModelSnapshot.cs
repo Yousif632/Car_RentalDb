@@ -128,9 +128,8 @@ namespace Car_RentalDb.Migrations
                     b.Property<int>("StaffID")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Year")
-                        .HasMaxLength(4)
-                        .HasColumnType("datetime2");
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
 
                     b.HasKey("CarID");
 

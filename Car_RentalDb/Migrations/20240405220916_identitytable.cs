@@ -221,7 +221,7 @@ namespace Car_RentalDb.Migrations
                     StaffID = table.Column<int>(type: "int", nullable: false),
                     LocationID = table.Column<int>(type: "int", nullable: false),
                     Model = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
-                    Year = table.Column<DateTime>(type: "datetime2", maxLength: 4, nullable: false),
+                    Year = table.Column<int>(type: "int", nullable: false),
                     DailyRate = table.Column<int>(type: "int", nullable: false),
                     FuelType = table.Column<string>(type: "nvarchar(6)", maxLength: 6, nullable: false),
                     IsAvailable = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false)

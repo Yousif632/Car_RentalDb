@@ -47,7 +47,6 @@ namespace Car_RentalDb.Areas.Identity.Data
                 new Staff {Name= "Liam",LastName="Thompson",Email="LiamThompson@outlook.com",Phone=0235342683,Active="Available",Address= "555 Walnut Lane, Auckland "},
                 new Staff {Name= "Isabella",LastName="Rivera",Email="IsabellaRivera@yahoo.com",Phone=0225074434,Active="Available",Address= "777 Spruce Street, Auckland 1101"},
                 new Staff {Name= "Ethan",LastName="Jenkins",Email="EthanJenkins@yahoo.com",Phone=0274723458,Active="Busy",Address= "888 Sycamore Avenue, Auckland 1110"},
-                new Staff {Name= "Jackson",LastName="Bills",Email="JacksonBills@gmail.com",Phone=0256232574,Active="UnAvailable",Address= "222 Willow Way, Auckland 1120"},
         };
             foreach (Staff s in staffs)
             {
@@ -57,17 +56,16 @@ namespace Car_RentalDb.Areas.Identity.Data
 
             var cars = new Car[]
         {
-                new Car {StaffID=1,LocationID=1,Model= "Toyota Hiux",Year=DateTime.Parse ("2015"), DailyRate= 590, FuelType= "Diesel",IsAvailable= "No"},
-                new Car {StaffID=2,LocationID=1, Model = "Mazda Demio", Year =DateTime.Parse ("2023"), DailyRate = 200, FuelType = "Petrol", IsAvailable = "Yes" },
-                new Car {StaffID=3, LocationID = 1, Model = "Toyota Aqua", Year = DateTime.Parse ("2016"), DailyRate = 154, FuelType = "Petrol", IsAvailable = "No" },
-                new Car {StaffID=4,LocationID = 1, Model = "Toyota Vitz", Year =DateTime.Parse ("2014"), DailyRate = 350, FuelType = "Petrol", IsAvailable = "Yes" },
-                new Car {StaffID=5,LocationID=1,Model = "Kia Niro", Year =DateTime.Parse ("2016"), DailyRate = 480, FuelType = "Petrol", IsAvailable = "No" },
-                new Car {StaffID=6,LocationID=1, Model = "Mitsubishi Triton", Year =DateTime.Parse ("2015"), DailyRate = 843, FuelType = "Diesel", IsAvailable = "Yes" },
-                new Car {StaffID=7, LocationID = 1, Model = "Ford Escape", Year =DateTime.Parse ("2014"), DailyRate = 781, FuelType = "Petrol", IsAvailable = "Yes" },
-                new Car {StaffID=8, LocationID = 1, Model = "Toyota Rav4", Year =DateTime.Parse  ("2010"), DailyRate = 430, FuelType = "Petrol", IsAvailable = "Yes" },
-                new Car {StaffID=9, LocationID = 1, Model = "Mitsubishi Triton Canopy", Year =DateTime.Parse ("2019"), DailyRate = 806, FuelType = "Diesel", IsAvailable = "No" },
-                new Car {StaffID=10, LocationID = 1, Model = "Toyota Hiluz", Year = DateTime.Parse("2023"), DailyRate = 602, FuelType = "Petrol", IsAvailable = "Yes" },
-                new Car {StaffID=11, LocationID = 1, Model = "Holden Trax", Year =DateTime.Parse("2020"), DailyRate = 444, FuelType = "Petrol", IsAvailable = "No" },
+                new Car {StaffID=1,LocationID=1,Model= "Toyota Hiux",Year=2015, DailyRate= 590, FuelType= "Diesel",IsAvailable= "No"},
+                new Car {StaffID=2,LocationID=1, Model = "Mazda Demio", Year =2023, DailyRate = 200, FuelType = "Petrol", IsAvailable = "Yes" },
+                new Car {StaffID=3, LocationID = 1, Model = "Toyota Aqua", Year = 2016, DailyRate = 154, FuelType = "Petrol", IsAvailable = "No" },
+                new Car {StaffID=4,LocationID = 1, Model = "Toyota Vitz", Year =2014, DailyRate = 350, FuelType = "Petrol", IsAvailable = "Yes" },
+                new Car {StaffID=5,LocationID=1,Model = "Kia Niro", Year =2016, DailyRate = 480, FuelType = "Petrol", IsAvailable = "No" },
+                new Car {StaffID=6, LocationID = 1, Model = "Ford Escape", Year =2014, DailyRate = 781, FuelType = "Petrol", IsAvailable = "Yes" },
+                new Car {StaffID=7, LocationID = 1, Model = "Toyota Rav4", Year =2010, DailyRate = 430, FuelType = "Petrol", IsAvailable = "Yes" },
+                new Car {StaffID=8, LocationID = 1, Model = "Mitsubishi Triton Canopy", Year =2019, DailyRate = 806, FuelType = "Diesel", IsAvailable = "No" },
+                new Car {StaffID=10, LocationID = 1, Model = "Toyota Hiluz", Year =2023, DailyRate = 602, FuelType = "Petrol", IsAvailable = "Yes" },
+                new Car {StaffID=11, LocationID = 1, Model = "Holden Trax", Year =2020, DailyRate = 444, FuelType = "Petrol", IsAvailable = "No" },
         };
             foreach (Car c in cars)
             {
