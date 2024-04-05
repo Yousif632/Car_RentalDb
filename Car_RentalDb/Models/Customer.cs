@@ -26,7 +26,7 @@ namespace Car_RentalDb.Models
         public int PhoneNumber { get; set; }
         [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
         [Required]
-        [StringLength(10)]
+        [StringLength(10,ErrorMessage ="Please enter Yes or No")]
         public string identitfication { get; set; }
 
         public ICollection<Rental> Rentals { get; set; }
