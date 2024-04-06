@@ -61,5 +61,17 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    <style>
+        .navbar-Background {
+            background-color:darkgray; /* Vibrant blue colour */
+        }
+        .nav-item {
+            color:white;
+        }
+        .home-icon:hover,
+        .other-icon:hover {
+            transform: scale(1.1); /* Scale the icon by 10% on hover*/
+        }
+    </style>
 </body>
 </html>
