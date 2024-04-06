@@ -72,7 +72,8 @@ namespace Car_RentalDb.Areas.Identity.Pages.Account
         public class InputModel
         {
              [Required]
-            [StringLength(20, ErrorMessage = "The first name field should have a maximum of 20 characters.")]
+            [RegularExpression(@"^[A-Z]+[a-zA-Z]*$", ErrorMessage = "The first name field should have a maximum of 20 characters.")]
+            [StringLength(20)]
             [Display(Name = "FirstName")]
             public string FirstName { get; set; }
             /// <summary>
@@ -80,7 +81,8 @@ namespace Car_RentalDb.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [Required]
-            [StringLength(20, ErrorMessage = "The lastname field should have a maximum of 20 characters.")]
+            [RegularExpression(@"^[A-Z]+[a-zA-Z]*$", ErrorMessage = "The lastname field should have a maximum of 20 characters.")]
+            [StringLength(20)]
             [Display(Name = "LastName")]
             public string LastName { get; set; }
            

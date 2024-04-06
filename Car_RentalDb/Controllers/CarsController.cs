@@ -61,7 +61,7 @@ namespace Car_RentalDb.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CarID,StaffID,LocationID,Model,Year,DailyRate,FuelType,IsAvailable")] Car car)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 _context.Add(car);
                 await _context.SaveChangesAsync();
@@ -102,7 +102,7 @@ namespace Car_RentalDb.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 try
                 {
