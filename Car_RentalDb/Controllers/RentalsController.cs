@@ -49,8 +49,8 @@ namespace Car_RentalDb.Controllers
         // GET: Rentals/Create
         public IActionResult Create()
         {
-            ViewData["CarID"] = new SelectList(_context.Car, "CarID", "CarID");
-            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerId", "CustomerId");
+            ViewData["CarID"] = new SelectList(_context.Car, "CarID", "FuelType");
+            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerId", "Address");
             return View();
         }
 
@@ -59,7 +59,7 @@ namespace Car_RentalDb.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RentalID,CarID,CustomerID,Start_Date,End_Date,Booking_Rate,Insurance_Charge,Fuel_Charge")] Rental rental)
+        public async Task<IActionResult> Create([Bind("RentalID,CarID,CustomerID,StartDate,EndDate,BookingRate,InsuranceCharge,FuelCharge")] Rental rental)
         {
             if (ModelState.IsValid)
             {
@@ -67,8 +67,8 @@ namespace Car_RentalDb.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CarID"] = new SelectList(_context.Car, "CarID", "CarID", rental.CarID);
-            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerId", "CustomerId", rental.CustomerID);
+            ViewData["CarID"] = new SelectList(_context.Car, "CarID", "FuelType", rental.CarID);
+            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerId", "Address", rental.CustomerID);
             return View(rental);
         }
 
@@ -85,8 +85,8 @@ namespace Car_RentalDb.Controllers
             {
                 return NotFound();
             }
-            ViewData["CarID"] = new SelectList(_context.Car, "CarID", "CarID", rental.CarID);
-            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerId", "CustomerId", rental.CustomerID);
+            ViewData["CarID"] = new SelectList(_context.Car, "CarID", "FuelType", rental.CarID);
+            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerId", "Address", rental.CustomerID);
             return View(rental);
         }
 
@@ -95,7 +95,7 @@ namespace Car_RentalDb.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("RentalID,CarID,CustomerID,Start_Date,End_Date,Booking_Rate,Insurance_Charge,Fuel_Charge")] Rental rental)
+        public async Task<IActionResult> Edit(int id, [Bind("RentalID,CarID,CustomerID,StartDate,EndDate,BookingRate,InsuranceCharge,FuelCharge")] Rental rental)
         {
             if (id != rental.RentalID)
             {
@@ -122,8 +122,8 @@ namespace Car_RentalDb.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CarID"] = new SelectList(_context.Car, "CarID", "CarID", rental.CarID);
-            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerId", "CustomerId", rental.CustomerID);
+            ViewData["CarID"] = new SelectList(_context.Car, "CarID", "FuelType", rental.CarID);
+            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerId", "Address", rental.CustomerID);
             return View(rental);
         }
 

@@ -4,16 +4,14 @@ namespace Car_RentalDb.Models
 {
     public class Customer
     {
-        //This is the primary Key//
+  
         public int CustomerId { get; set; }
-        //This is the Name field//
-        //The vaildation stops users from entering number and special letters//
+    
         [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
         [Required]
         [StringLength(10)]
         public string Name { get; set; }
-        //This is the last name field//
-        //The vaildation stops users from entering number and special letters//
+        
 
         [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
         [Required]

@@ -13,19 +13,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Start_Date)
+                @Html.DisplayNameFor(model => model.StartDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.End_Date)
+                @Html.DisplayNameFor(model => model.EndDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Booking_Rate)
+                @Html.DisplayNameFor(model => model.BookingRate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Insurance_Charge)
+                @Html.DisplayNameFor(model => model.InsuranceCharge)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Fuel_Charge)
+                @Html.DisplayNameFor(model => model.FuelCharge)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Car)
@@ -40,25 +40,25 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Start_Date)
+                @Html.DisplayFor(modelItem => item.StartDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.End_Date)
+                @Html.DisplayFor(modelItem => item.EndDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Booking_Rate)
+                @Html.DisplayFor(modelItem => item.BookingRate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Insurance_Charge)
+                @Html.DisplayFor(modelItem => item.InsuranceCharge)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Fuel_Charge)
+                @Html.DisplayFor(modelItem => item.FuelCharge)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Car.CarID)
+                @Html.DisplayFor(modelItem => item.Car.FuelType)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Customer.CustomerId)
+                @Html.DisplayFor(modelItem => item.Customer.Address)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.RentalID">Edit</a> |

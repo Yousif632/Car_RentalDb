@@ -225,7 +225,7 @@ namespace Car_RentalDb.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RentalID"));
 
-                    b.Property<int>("Booking_Rate")
+                    b.Property<int>("BookingRate")
                         .HasColumnType("int");
 
                     b.Property<int>("CarID")
@@ -234,16 +234,16 @@ namespace Car_RentalDb.Migrations
                     b.Property<int>("CustomerID")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("End_Date")
+                    b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Fuel_Charge")
+                    b.Property<int>("FuelCharge")
                         .HasColumnType("int");
 
-                    b.Property<int>("Insurance_Charge")
+                    b.Property<int>("InsuranceCharge")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Start_Date")
+                    b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("RentalID");
@@ -265,11 +265,13 @@ namespace Car_RentalDb.Migrations
 
                     b.Property<string>("Active")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(13)
+                        .HasColumnType("nvarchar(13)");
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -277,13 +279,16 @@ namespace Car_RentalDb.Migrations
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<int>("Phone")
+                        .HasMaxLength(10)
                         .HasColumnType("int");
 
                     b.HasKey("StaffId");

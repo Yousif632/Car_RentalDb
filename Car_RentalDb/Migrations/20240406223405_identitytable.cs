@@ -94,12 +94,12 @@ namespace Car_RentalDb.Migrations
                 {
                     StaffId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Phone = table.Column<int>(type: "int", nullable: false),
-                    Active = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Phone = table.Column<int>(type: "int", maxLength: 10, nullable: false),
+                    Active = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -251,11 +251,11 @@ namespace Car_RentalDb.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CarID = table.Column<int>(type: "int", nullable: false),
                     CustomerID = table.Column<int>(type: "int", nullable: false),
-                    Start_Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    End_Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Booking_Rate = table.Column<int>(type: "int", nullable: false),
-                    Insurance_Charge = table.Column<int>(type: "int", nullable: false),
-                    Fuel_Charge = table.Column<int>(type: "int", nullable: false)
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    BookingRate = table.Column<int>(type: "int", nullable: false),
+                    InsuranceCharge = table.Column<int>(type: "int", nullable: false),
+                    FuelCharge = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
