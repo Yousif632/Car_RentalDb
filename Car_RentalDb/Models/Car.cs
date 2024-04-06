@@ -9,12 +9,12 @@ namespace Car_RentalDb.Models
 
         //FK which is the parent//
         public int StaffID { get; set; }
-        ////
+        //Fk which is the parent//
        
         public int LocationID { get; set; }
 
         //This is the model field//
-        //This validation blocks people from entering special character and numbers and has the stringlenght of 25//
+        //This validation blocks users from entering special character and numbers and has the stringlenght of 25//
         [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
         [Required]
         [StringLength(25)]
@@ -30,14 +30,15 @@ namespace Car_RentalDb.Models
         [DataType(DataType.Currency)]
         public int DailyRate { get; set; }
         //This is the FuelType field//
-        //The fuel type has a validation blocks people from entering special character and numbers and has the stringlenght of 25//
-        [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
+        //The fuel type has a validation blocks users from entering special character and numbers and has the stringlenght of 25//
+        [RegularExpression(@"^[A-Z]+[a-zA-Z]*$", ErrorMessage = "Please enter the right fuel type Petrol or Diesel")]
         [Required]
         [StringLength(6)]
         public string FuelType { get; set; }
         //This is the IsAvailable field//
+        //the IsAvailable show the avtivety of the vehicle//
 
-        [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z]*$", ErrorMessage = "Please enter vaild activety from UnAvaliable,Avaliable and Busy")]
         [Required]
         [StringLength(13)]
         public string IsAvailable { get; set; }
