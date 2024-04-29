@@ -21,14 +21,17 @@ namespace Car_RentalDb.Models
         [Range(100, 1000)]
         [DataType(DataType.Currency)]
         public int BookingRate { get; set; }
+
         [Range(100, 1000)]
         [DataType(DataType.Currency)]
         public int InsuranceCharge { get; set; }
+
         [Range(0, 350)]
         [DataType(DataType.Currency)]
         public int FuelCharge { get; set; }
 
         public Car Car { get; set; }
+
         public Customer Customer { get; set; }
     }
 }

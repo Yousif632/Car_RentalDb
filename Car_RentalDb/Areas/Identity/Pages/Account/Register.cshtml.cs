@@ -85,9 +85,9 @@ namespace Car_RentalDb.Areas.Identity.Pages.Account
             [StringLength(20)]
             [Display(Name = "LastName")]
             public string LastName { get; set; }
-           
+
             [Required]
-            [StringLength(10, ErrorMessage = "The phone number field should have a maximum of 10 characters.")]
+            [Range(0210000000, 0219999999, ErrorMessage = "Please enter the correct start (021).")]
             [Display(Name = "PhoneNumber")]
             public string PhoneNumber{ get; set; }
             /// <summary>
