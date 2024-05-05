@@ -4,18 +4,19 @@ namespace Car_RentalDb.Models
 {
     public class Customer
     {
-  
-        public int CustomerId { get; set; }
-    
-        [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
-        [Required]
-        [StringLength(10)]
-        public string Name { get; set; }
-        
 
-        [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
-        [Required]
-        [StringLength(10)]
+        public int CustomerId { get; set; }
+        
+        [Display(Name = "First Name")]
+        [Required(ErrorMessage = "Please enter first name")]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]
+        [StringLength(20)]
+        public string Name { get; set; }
+
+        [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]
+        [Display(Name = "Last Name")]
+        [Required(ErrorMessage = "Please enter last name")]
+        [StringLength(20)]
         public string LastName { get; set; }
 
 
