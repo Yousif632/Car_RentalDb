@@ -5,7 +5,7 @@ namespace Car_RentalDb.Models
     public class Rental
     {
         public int RentalID { get; set; }
-        public int CarID{ get; set; }
+        public int CarID { get; set; }
         public int CustomerID { get; set; }
 
         [Display(Name = "Start date")]

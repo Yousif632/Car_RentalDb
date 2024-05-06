@@ -32,7 +32,7 @@ namespace Car_RentalDb.Models
 
 
         [Required]
-        [Range(0210000000,0219999999, ErrorMessage = "Please enter the correct start (021).")]
+        [Range(6400000000,6499999999, ErrorMessage = "Please enter a correct starting and the lenght must be 10.")]
         [Display(Name = "PhoneNumber")]
         public int PhoneNumber { get; set; }
 

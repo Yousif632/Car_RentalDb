@@ -71,23 +71,23 @@ namespace Car_RentalDb.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
-             [Required]
-            [RegularExpression(@"^[A-Z]+[a-zA-Z]*$", ErrorMessage = "The first name field should have a maximum of 20 characters.")]
+            [Display(Name = "First Name")]
+            [Required(ErrorMessage = "Please enter first name")]
+            [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]
             [StringLength(20)]
-            [Display(Name = "FirstName")]
             public string FirstName { get; set; }
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
-            [RegularExpression(@"^[A-Z]+[a-zA-Z]*$", ErrorMessage = "The lastname field should have a maximum of 20 characters.")]
+            [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]
+            [Display(Name = "Last Name")]
+            [Required(ErrorMessage = "Please enter last name")]
             [StringLength(20)]
-            [Display(Name = "LastName")]
             public string LastName { get; set; }
 
             [Required]
-            [Range(0210000000, 0219999999, ErrorMessage = "Please enter the correct start (021).")]
+            [Range(6400000000, 6499999999, ErrorMessage = "Please enter the correct start (021).")]
             [Display(Name = "PhoneNumber")]
             public string PhoneNumber{ get; set; }
             /// <summary>
