@@ -22,7 +22,7 @@ namespace Car_RentalDb.Models
         //This is the year field//
 
         [Required]
-        [Range(2000,2024,ErrorMessage ="Please enter a vaild model year (From 2000 - 2024")]
+        [Range(2000,2024,ErrorMessage ="Please enter a vaild model year (From 2000 - 2024)")]
         public int Year { get; set; }
         //This is the DailyRate field//
         //The Validation is that daily rate must be over 100 and not more than 1000//
@@ -31,14 +31,14 @@ namespace Car_RentalDb.Models
         public int DailyRate { get; set; }
         //This is the FuelType field//
         //The fuel type has a validation blocks users from entering special character and numbers and has the stringlenght of 25//
-        [RegularExpression(@"^[A-Z]+[a-zA-Z]*$", ErrorMessage = "Please enter the right fuel type Petrol or Diesel")]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z]*$", ErrorMessage = "Please enter the right fuel type (Petrol or Diesel)")]
         [Required]
         [StringLength(6)]
         public string FuelType { get; set; }
         //This is the IsAvailable field//
         //the IsAvailable show the avtivety of the vehicle//
 
-        [RegularExpression(@"^[A-Z]+[a-zA-Z\s]$", ErrorMessage = "Please enter vaild activety from UnAvaliable,Avaliable and Busy")]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z\s]$", ErrorMessage = "Please enter vaild activety from (UnAvaliable,Avaliable and Busy)")]
         [Required]
         [StringLength(13)]
         public string IsAvailable { get; set; }

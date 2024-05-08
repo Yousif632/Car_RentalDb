@@ -19,17 +19,18 @@ namespace Car_RentalDb.Areas.Identity.Data
             var customers = new Customer[]
            {
                  new Customer {Name= "Mary", LastName= "Willam",Email= "Mary.Willam@gmail.com", Address= "123 Main Street Auckland 1010 New Zealand",PhoneNumber= 02127329032,identitfication= "Yes"},
-                 new Customer {Name= "John", LastName= "Smith",Email= "Mary.Willam@gmail.com", Address= "456 New North Road, Kingsland, Auckland, 1021",PhoneNumber= 0280123456,identitfication= "No"},
-                 new Customer {Name= "Emily", LastName= "Jones",Email= "Mary.Willam@gmail.com", Address= "789 Dominion Road, Mt Eden, Auckland, 1024",PhoneNumber= 0211234567,identitfication= "Yes"},
-                 new Customer {Name= "Michael", LastName= "Brown",Email= "Mary.Willam@gmail.com", Address= "101 Ponsonby Road, Ponsonby, Auckland, 1011",PhoneNumber=0222345678,identitfication= "Yes"},
-                 new Customer {Name= "Sophia", LastName= "Davis",Email= "Mary.Willam@gmail.com", Address= "202 Great North Road, Grey Lynn, Auckland, 1021",PhoneNumber= 0203456789,identitfication= "Yes"},
-                 new Customer {Name= "Daniel", LastName= "Miller",Email= "Mary.Willam@gmail.com", Address= "303 K Road, Newton, Auckland, 1010",PhoneNumber=0274567890,identitfication= "No"},
-                 new Customer {Name= "Olivia", LastName= "Wilson",Email= "Mary.Willam@gmail.com", Address= "404 Remuera Road, Remuera, Auckland, 1050",PhoneNumber= 0255678901,identitfication= "Yes"},
-                 new Customer {Name= "Christ", LastName= "Moore",Email= "Mary.Willam@gmail.com", Address= "505 Beach Road, Mission Bay, Auckland, 1071",PhoneNumber=0296789012,identitfication= "No"},
-                 new Customer {Name= "Ava", LastName= "Taylor",Email= "Mary.Willam@gmail.com", Address= "606 Takapuna Road, Takapuna, Auckland, 0622",PhoneNumber= 0237890123,identitfication= "No"},
-                 new Customer {Name= "William", LastName= "Johnson",Email= "Mary.Willam@gmail.com", Address= "707 Albany Highway, Albany, Auckland, 0632",PhoneNumber= 0248901234,identitfication= "Yes"},
+                 new Customer {Name= "John", LastName= "Smith",Email= "JohnSmith@outlook.com", Address= "456 New North Road, Kingsland, Auckland, 1021",PhoneNumber= 0280123456,identitfication= "No"},
+                 new Customer {Name= "Emily", LastName= "Jones",Email= "EmilyJones@gmail.com", Address= "789 Dominion Road, Mt Eden, Auckland, 1024",PhoneNumber= 0211234567,identitfication= "Yes"},
+                 new Customer {Name= "Michael", LastName= "Brown",Email= "MichaelBrown@gmail.com", Address= "101 Ponsonby Road, Ponsonby, Auckland, 1011",PhoneNumber=0222345678,identitfication= "Yes"},
+                 new Customer {Name= "Sophia", LastName= "Davis",Email= "SophiaDavis@yahoo.com", Address= "202 Great North Road, Grey Lynn, Auckland, 1021",PhoneNumber= 0203456789,identitfication= "Yes"},
+                 new Customer {Name= "Daniel", LastName= "Miller",Email= "DanielMiller@outlook.com", Address= "303 K Road, Newton, Auckland, 1010",PhoneNumber=0274567890,identitfication= "No"},
+                 new Customer {Name= "Olivia", LastName= "Wilson",Email= "Oliviaillson@gmail.com", Address= "404 Remuera Road, Remuera, Auckland, 1050",PhoneNumber= 0255678901,identitfication= "Yes"},
+                 new Customer {Name= "Christ", LastName= "Moore",Email= "ChristMoore@yahoo.com", Address= "505 Beach Road, Mission Bay, Auckland, 1071",PhoneNumber=0296789012,identitfication= "No"},
+                 new Customer {Name= "Ava", LastName= "Taylor",Email= "AvaTaylor@gmail.com", Address= "606 Takapuna Road, Takapuna, Auckland, 0622",PhoneNumber= 0237890123,identitfication= "No"},
+                 new Customer {Name= "William", LastName= "Johnson",Email= "WilliamJohnson@gmail.com", Address= "707 Albany Highway, Albany, Auckland, 0632",PhoneNumber= 0248901234,identitfication= "Yes"},
 
            };
+
             foreach (Customer c in customers)
             {
                 context.Customer.Add(c);
@@ -50,6 +51,7 @@ namespace Car_RentalDb.Areas.Identity.Data
                 new Location {Address="8 Commerce Street, Auckland Central",City= "Auckland",Zip=1050,Country="New Zealand",OpeningHours=DateTime.Parse( "10:30am"),ClosingHours=DateTime.Parse("4:30pm") },
 
         };
+
             foreach (Location l in locations)
             {
                 context.Location.Add(l);
@@ -69,6 +71,7 @@ namespace Car_RentalDb.Areas.Identity.Data
                 new Staff {Name= "Isabella",LastName="Rivera",Email="IsabellaRivera@yahoo.com",Phone=0225074434,Active="Available",Address= "777 Spruce Street, Auckland 1101"},
                 new Staff {Name= "Ethan",LastName="Jenkins",Email="EthanJenkins@yahoo.com",Phone=0274723458,Active="Busy",Address= "888 Sycamore Avenue, Auckland 1110"},
         };
+
             foreach (Staff s in staffs)
             {
                 context.Staff.Add(s);
@@ -107,6 +110,7 @@ namespace Car_RentalDb.Areas.Identity.Data
                 new Rental {CarID=9,CustomerID=9,StartDate=DateTime.Parse( "2024-11-25"),EndDate=DateTime.Parse( "2024-12-01"),BookingRate = 415,InsuranceCharge=433,FuelCharge=300},
                 new Rental {CarID=10,CustomerID=10,StartDate=DateTime.Parse( "2024-05-20"),EndDate=DateTime.Parse( "2023-05-23"),BookingRate = 250,InsuranceCharge=244,FuelCharge=267 }
   };
+
             foreach (Rental r in rentals)
             {
                 context.Rental.Add(r);
