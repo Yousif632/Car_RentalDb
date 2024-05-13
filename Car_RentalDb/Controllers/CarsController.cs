@@ -20,10 +20,17 @@ namespace Car_RentalDb.Controllers
         }
 
         // GET: Cars
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            var car_RentalDbContext = _context.Car.Include(c => c.Location).Include(c => c.Staff);
-            return View(await car_RentalDbContext.ToListAsync());
+            IQueryable<Car> Cars = _context.Car;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                Cars = Cars.Where(s => s.Model.Contains(searchString));
+            }
+
+            
+            return View(await Cars.ToListAsync());
         }
 
         // GET: Cars/Details/5

@@ -5,6 +5,12 @@
 }
 
 <h1>Index</h1>
+<form asp-action="Index" method="get">
+    <div class="form-group">
+        <input type="text" name="searchString" class="form-control" placeholder="Search by model"/>
+        <button type="submit" class="btn btn-primary">search</button>
+    </div>
+</form>
 
 <p>
     <a asp-action="Create">Create New</a>

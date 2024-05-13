@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Car_RentalDb.Migrations
 {
     [DbContext(typeof(Car_RentalDbContext))]
-    [Migration("20240506215105_identitytable")]
+    [Migration("20240513215347_identitytable")]
     partial class identitytable
     {
         /// <inheritdoc />
@@ -46,13 +46,11 @@ namespace Car_RentalDb.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");

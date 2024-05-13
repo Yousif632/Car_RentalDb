@@ -30,6 +30,7 @@ namespace Car_RentalDb.Models
 
         [Required(ErrorMessage = "Address is required")]
         [StringLength(100, MinimumLength = 5, ErrorMessage = "Address must be between 5 and 100 characters")]
+
         public string Address { get; set; }
 
         public ICollection<Car> Cars { get; set; }
