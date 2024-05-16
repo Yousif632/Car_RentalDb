@@ -20,9 +20,15 @@ namespace Car_RentalDb.Controllers
         }
 
         // GET: Locations
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.Location.ToListAsync());
+            IQueryable<Location> locations = _context.Location;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                locations = locations.Where(s => s.Address.Contains(searchString));
+            }
+
+            return View(await locations.ToListAsync());
         }
 
         // GET: Locations/Details/5
