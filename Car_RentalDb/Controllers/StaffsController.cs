@@ -20,10 +20,18 @@ namespace Car_RentalDb.Controllers
         }
 
         // GET: Staffs
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
+
         {
-            return View(await _context.Staff.ToListAsync());
+            IQueryable<Staff> staffs = _context.Staff;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                staffs = staffs.Where(s => s.Name.Contains(searchString));
+            }
+
+            return View(await staffs.ToListAsync());
         }
+
 
         // GET: Staffs/Details/5
         public async Task<IActionResult> Details(int? id)
