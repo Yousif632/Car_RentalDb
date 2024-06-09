@@ -26,7 +26,7 @@ namespace Car_RentalDb.Controllers
 
             if (!string.IsNullOrEmpty(searchString))
             {
-                Customers = Customers.Where(s => s.Name.Contains(searchString));
+                Customers = Customers.Where(s =>s. Name.Contains(searchString));
             }
 
             return View(await Customers.ToListAsync());

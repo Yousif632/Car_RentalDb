@@ -20,6 +20,7 @@ namespace Car_RentalDb.Controllers
         }
 
         // GET: Cars
+        // Added search filter for the model//
         public async Task<IActionResult> Index(string searchString)
         {
             IQueryable<Car> Cars = _context.Car;

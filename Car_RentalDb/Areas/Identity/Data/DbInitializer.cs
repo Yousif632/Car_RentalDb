@@ -9,7 +9,7 @@ namespace Car_RentalDb.Areas.Identity.Data
         {
             context.Database.EnsureCreated();
 
-            //Look for any customers.
+            //Look for any cars.
             if (context.Car.Any())
             {
                 return; //DB has been seeded

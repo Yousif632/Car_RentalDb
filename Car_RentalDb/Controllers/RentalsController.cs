@@ -20,12 +20,20 @@ namespace Car_RentalDb.Controllers
         }
 
         // GET: Rentals
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? searchBookingRate)
         {
-            var car_RentalDbContext = _context.Rental.Include(r => r.Car).Include(r => r.Customer);
-            return View(await car_RentalDbContext.ToListAsync());
-        }
+            IQueryable<Rental> rentals = _context.Rental;
 
+            ViewData["BookingRate"] = searchBookingRate;
+           
+
+            if (searchBookingRate.HasValue)
+            {
+                rentals = rentals.Where(r => r.BookingRate == searchBookingRate.Value);
+            }
+
+            return View(await rentals.ToListAsync());
+        }
         // GET: Rentals/Details/5
         public async Task<IActionResult> Details(int? id)
         {
