@@ -87,9 +87,9 @@ namespace Car_RentalDb.Areas.Identity.Pages.Account
             public string LastName { get; set; }
 
             [Required]
-            [Range(6400000000, 6499999999, ErrorMessage = "Please enter the correct start (021).")]
+            [Range(0000000000, 9999999999, ErrorMessage = "Please enter a phone number with max 10 .")]
             [Display(Name = "PhoneNumber")]
-            public string PhoneNumber{ get; set; }
+            public int PhoneNumber{ get; set; }
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
@@ -98,6 +98,7 @@ namespace Car_RentalDb.Areas.Identity.Pages.Account
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
+            [StringLength(20)]
             public string Email { get; set; }
 
             /// <summary>

@@ -20,7 +20,7 @@ namespace Car_RentalDb.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
         [Required]
-        [Range(021000000, 0219999999, ErrorMessage = "Please enter the correct start (021).")]
+        [Range(000000000, 9999999999, ErrorMessage = "Please enter a phone number with max 10.")]
         [Display(Name = "PhoneNumber")]
         public int Phone { get; set; }
         [RegularExpression(@"^[A-Z]+[a-zA-Z]*$", ErrorMessage = "Please enter vaild activety from Avtive or Not Active")]

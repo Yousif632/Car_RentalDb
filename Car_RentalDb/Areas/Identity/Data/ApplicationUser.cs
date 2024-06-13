@@ -15,6 +15,6 @@ public class ApplicationUser : IdentityUser
 
     public string LastName { get; set; }
 
-    public string PhoneNumber {  get; set; }
+    public int PhoneNumber {  get; set; }
 }
 
