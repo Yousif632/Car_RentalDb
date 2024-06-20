@@ -223,7 +223,7 @@ namespace Car_RentalDb.Migrations
                     Model = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
                     Year = table.Column<int>(type: "int", nullable: false),
                     DailyRate = table.Column<int>(type: "int", nullable: false),
-                    FuelType = table.Column<string>(type: "nvarchar(6)", maxLength: 6, nullable: false),
+                    FuelType = table.Column<int>(type: "int", maxLength: 6, nullable: false),
                     IsAvailable = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false)
                 },
                 constraints: table =>

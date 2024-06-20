@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Car_RentalDb.Migrations
 {
     [DbContext(typeof(Car_RentalDbContext))]
-    [Migration("20240613012923_identitytable")]
+    [Migration("20240620015312_identitytable")]
     partial class identitytable
     {
         /// <inheritdoc />
@@ -109,10 +109,9 @@ namespace Car_RentalDb.Migrations
                     b.Property<int>("DailyRate")
                         .HasColumnType("int");
 
-                    b.Property<string>("FuelType")
-                        .IsRequired()
+                    b.Property<int>("FuelType")
                         .HasMaxLength(6)
-                        .HasColumnType("nvarchar(6)");
+                        .HasColumnType("int");
 
                     b.Property<string>("IsAvailable")
                         .IsRequired()

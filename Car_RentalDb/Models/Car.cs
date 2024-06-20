@@ -2,8 +2,17 @@
 
 namespace Car_RentalDb.Models
 {
+    public enum FuelType
+    {
+        Petrol,
+        Diesel,
+        PetrolSupreme
+
+    }
     public class Car
     {
+        
+
         //primary key is child//
         public int CarID { get; set; }
 
@@ -31,10 +40,9 @@ namespace Car_RentalDb.Models
         public int DailyRate { get; set; }
         //This is the FuelType field//
         //The fuel type has a validation blocks users from entering special character and numbers and has the stringlenght of 25//
-        [RegularExpression(@"^[A-Z]+[a-zA-Z]*$", ErrorMessage = "Please enter the right fuel type (Petrol or Diesel)")]
+      
         [Required]
-        [StringLength(6)]
-        public string FuelType { get; set; }
+        public FuelType FuelType { get; set; }
         //This is the IsAvailable field//
         //the IsAvailable show the avtivety of the vehicle//
 
