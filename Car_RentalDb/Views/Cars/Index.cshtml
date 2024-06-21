@@ -18,11 +18,12 @@
 <table class="table">
     <thead>
         <tr>
+            
             <th>
-                @Html.DisplayNameFor(model => model.Model)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["ModelSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Model</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Year)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["YearSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Year</a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DailyRate)

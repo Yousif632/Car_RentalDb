@@ -21,15 +21,36 @@ namespace Car_RentalDb.Controllers
 
         // GET: Cars
         // Added search filter for the model//
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index(string sortOrder, string searchString )
         {
-            IQueryable<Car> Cars = _context.Car;
+            ViewData["CurrentFilter"] = searchString;
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["ModelSortParm"] = String.IsNullOrEmpty(sortOrder) ? "model_desc" : "";
+            ViewData["YearSortParm"] = sortOrder == "Year" ? "Year_desc" : "Year";
+            var cars = from c in _context.Car
+                       select c; 
+            IQueryable < Car > Cars = _context.Car;
 
             if (!string.IsNullOrEmpty(searchString))
             {
                 Cars = Cars.Where(s => s.Model.Contains(searchString));
             }
 
+            switch (sortOrder)
+            {
+                case "model_desc":
+                    cars = cars.OrderByDescending(s => s.Model);
+                    break;
+                case "Year":
+                    cars = cars.OrderBy(s => s.Year);
+                    break;
+                case "Year_desc":
+                    cars = cars.OrderByDescending(s => s.Year);
+                    break;
+                default:
+                    cars = cars.OrderBy(s => s.Model);
+                    break;
+            }
             
             return View(await Cars.ToListAsync());
         }

@@ -12,7 +12,6 @@ namespace Car_RentalDb.Models
     public class Car
     {
         
-
         //primary key is child//
         public int CarID { get; set; }
 
