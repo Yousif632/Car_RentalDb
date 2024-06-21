@@ -21,19 +21,20 @@ namespace Car_RentalDb.Controllers
 
         // GET: Cars
         // Added search filter for the model//
-        public async Task<IActionResult> Index(string sortOrder, string searchString )
+        public async Task<IActionResult> Index(string sortOrder, string searchString)
         {
-            ViewData["CurrentFilter"] = searchString;
-            ViewData["CurrentSort"] = sortOrder;
-            ViewData["ModelSortParm"] = String.IsNullOrEmpty(sortOrder) ? "model_desc" : "";
-            ViewData["YearSortParm"] = sortOrder == "Year" ? "Year_desc" : "Year";
+            Console.WriteLine(sortOrder);
+            ViewData["CurrentFilter"] = searchString; 
+            ViewData["CurrentSort"] = sortOrder; 
+            ViewData["ModelSortParm"] = String.IsNullOrEmpty(sortOrder) ? "model_desc" : "model";
+            ViewData["YearSortParm"] = sortOrder == "year" ? "year_desc" : "year";
+
             var cars = from c in _context.Car
                        select c; 
-            IQueryable < Car > Cars = _context.Car;
-
+            
             if (!string.IsNullOrEmpty(searchString))
             {
-                Cars = Cars.Where(s => s.Model.Contains(searchString));
+                cars = cars.Where(s => s.Model.Contains(searchString));
             }
 
             switch (sortOrder)
@@ -41,18 +42,18 @@ namespace Car_RentalDb.Controllers
                 case "model_desc":
                     cars = cars.OrderByDescending(s => s.Model);
                     break;
-                case "Year":
+                case "year":
                     cars = cars.OrderBy(s => s.Year);
                     break;
-                case "Year_desc":
+                case "year_desc":
                     cars = cars.OrderByDescending(s => s.Year);
                     break;
                 default:
                     cars = cars.OrderBy(s => s.Model);
                     break;
             }
-            
-            return View(await Cars.ToListAsync());
+
+            return View(await cars.AsNoTracking().ToListAsync());
         }
 
         // GET: Cars/Details/5
