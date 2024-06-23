@@ -19,7 +19,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Name</a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.LastName)
@@ -28,7 +28,7 @@
                 @Html.DisplayNameFor(model => model.Email)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Address)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["AddressSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Address</a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.PhoneNumber)

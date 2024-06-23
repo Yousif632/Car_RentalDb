@@ -20,17 +20,40 @@ namespace Car_RentalDb.Controllers
         }
 
         // GET: Customers
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index(string sortOrder,string searchString)
         {
-            IQueryable<Customer> Customers = _context.Customer;
+            ViewData["CurrentFilter"] = searchString;
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "name";
+            ViewData["AddressSortParm"] = sortOrder == "address" ? "address_desc" : "address";
+
+            var customers = from c in _context.Customer
+                            select c;
 
             if (!string.IsNullOrEmpty(searchString))
             {
-                Customers = Customers.Where(s =>s. Name.Contains(searchString));
+                customers = customers.Where(s =>s. Name.Contains(searchString));
             }
 
-            return View(await Customers.ToListAsync());
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    customers = customers.OrderByDescending(s => s.Name);
+                    break;
+                case "address":
+                    customers = customers.OrderBy(s => s.Address);
+                    break;
+                case "address_desc":
+                    customers = customers.OrderByDescending(s => s.Address);
+                    break;
+                default:
+                    customers = customers.OrderBy(s => s.Name);
+                    break;
+
+            }
+            return View(await customers.ToListAsync());
         }
+        
 
         // GET: Customers/Details/5
         public async Task<IActionResult> Details(int? id)

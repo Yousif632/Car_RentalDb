@@ -23,7 +23,6 @@ namespace Car_RentalDb.Controllers
         // Added search filter for the model//
         public async Task<IActionResult> Index(string sortOrder, string searchString)
         {
-            Console.WriteLine(sortOrder);
             ViewData["CurrentFilter"] = searchString; 
             ViewData["CurrentSort"] = sortOrder; 
             ViewData["ModelSortParm"] = String.IsNullOrEmpty(sortOrder) ? "model_desc" : "model";

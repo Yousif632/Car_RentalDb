@@ -17,8 +17,8 @@ namespace Car_RentalDb.Models
 
         //FK which is the parent//
         public int StaffID { get; set; }
+
         //Fk which is the parent//
-       
         public int LocationID { get; set; }
 
         //This is the model field//
