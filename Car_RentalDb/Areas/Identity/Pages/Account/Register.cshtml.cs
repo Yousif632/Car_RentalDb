@@ -86,10 +86,10 @@ namespace Car_RentalDb.Areas.Identity.Pages.Account
             [StringLength(20)]
             public string LastName { get; set; }
 
-            [Required]
-            [Range(0000000000, 9999999999, ErrorMessage = "Please enter a phone number with max 10 .")]
-            [Display(Name = "PhoneNumber")]
-            public int PhoneNumber{ get; set; }
+            [Required(ErrorMessage = "Phone number is required.")]
+            [Range(0000000000, 9999999999, ErrorMessage = "Phone number must be between 0000000000 and 9999999999.")]
+            [Display(Name = "Phone Number")]
+            public int PhoneNumber { get; set; }
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
