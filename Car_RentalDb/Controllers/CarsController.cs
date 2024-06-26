@@ -38,6 +38,7 @@ namespace Car_RentalDb.Controllers
             {
                 searchString = currentFilter;
             }
+
             ViewData["CurrentFilter"] = searchString;
 
             var cars = from c in _context.Car
@@ -68,8 +69,8 @@ namespace Car_RentalDb.Controllers
                     cars = cars.OrderBy(s => s.Model);
                     break;
             }
-
-            int pageSize = 3;
+            //This is the page size or pagination//
+            int pageSize = 5;
             return View(await PaginatedList<Car>.CreateAsync(cars.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 

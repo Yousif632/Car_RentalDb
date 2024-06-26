@@ -11,14 +11,15 @@ namespace Car_RentalDb.Models
         [Display(Name = "Start date")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        [Range(typeof(DateTime), "1/1/2024", "12/31/2024", ErrorMessage = "Invalid date range. It should be only from 2024")]
+       
 
         public DateTime StartDate { get; set; }
+        
 
         [Display(Name = "End date")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        [Range(typeof(DateTime), "1/1/2024", "12/31/2024", ErrorMessage = "Invalid date range. It should be only from 2024")]
+       
         public DateTime EndDate { get; set; }
 
         [Range(100, 1000)]

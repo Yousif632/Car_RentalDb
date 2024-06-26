@@ -23,7 +23,7 @@ namespace Car_RentalDb.Models
 
         //This is the model field//
         //This validation blocks users from entering special character and numbers and has the stringlenght of 25//
-        [RegularExpression(@"^[A-Z]+[a-zA-Z\s]$")]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]
         [Required]
         [StringLength(25)]
         public string Model { get; set; }
@@ -45,7 +45,7 @@ namespace Car_RentalDb.Models
         //This is the IsAvailable field//
         //the IsAvailable show the avtivety of the vehicle//
 
-        [RegularExpression(@"^[A-Z]+[a-zA-Z\s]$", ErrorMessage = "Please enter vaild activety from (UnAvaliable,Avaliable and Busy)")]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$", ErrorMessage = "Please enter vaild activety from (UnAvaliable,Avaliable and Busy)")]
         [Required]
         [StringLength(13)]
         public string IsAvailable { get; set; }

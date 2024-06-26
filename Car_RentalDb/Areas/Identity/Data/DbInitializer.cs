@@ -18,6 +18,7 @@ namespace Car_RentalDb.Areas.Identity.Data
 
             var customers = new Customer[]
            {
+               //This is the data which will be displayed on the front end//
                  new Customer {Name= "Mary", LastName= "Willam",Email= "Mary.Willam@gmail.com", Address= "123 Main Street Auckland 1010 New Zealand",PhoneNumber= 02127329032,identitfication= "Yes"},
                  new Customer {Name= "John", LastName= "Smith",Email= "JohnSmith@outlook.com", Address= "456 New North Road, Kingsland, Auckland, 1021",PhoneNumber= 0280123456,identitfication= "No"},
                  new Customer {Name= "Emily", LastName= "Jones",Email= "EmilyJones@gmail.com", Address= "789 Dominion Road, Mt Eden, Auckland, 1024",PhoneNumber= 0211234567,identitfication= "Yes"},
@@ -99,14 +100,14 @@ namespace Car_RentalDb.Areas.Identity.Data
 
             var rentals = new Rental[]
   {
-                new Rental {CarID=1,CustomerID=1,StartDate=DateTime.Parse( "2023-02-20"),EndDate=DateTime.Parse( "2023-02-25"),BookingRate = 450,InsuranceCharge=235,FuelCharge=183 },
-                new Rental {CarID=2,CustomerID=2,StartDate=DateTime.Parse( "2023-06-15"),EndDate=DateTime.Parse( "2023-06-17"),BookingRate = 150,InsuranceCharge=178,FuelCharge=230 },
+                new Rental {CarID=1,CustomerID=1,StartDate=DateTime.Parse( "2024-02-20"),EndDate=DateTime.Parse( "2023-02-25"),BookingRate = 450,InsuranceCharge=235,FuelCharge=183 },
+                new Rental {CarID=2,CustomerID=2,StartDate=DateTime.Parse( "2024-06-15"),EndDate=DateTime.Parse( "2023-06-17"),BookingRate = 150,InsuranceCharge=178,FuelCharge=230 },
                 new Rental {CarID=3,CustomerID=3,StartDate=DateTime.Parse( "2024-08-07"),EndDate=DateTime.Parse( "2024-08-10"),BookingRate = 550,InsuranceCharge=190,FuelCharge=160},
                 new Rental {CarID=4,CustomerID=4,StartDate=DateTime.Parse( "2024-10-22"),EndDate=DateTime.Parse( "2024-10-25"),BookingRate = 230,InsuranceCharge=170,FuelCharge=78},
-                new Rental {CarID=5,CustomerID=5,StartDate=DateTime.Parse( "2023-01-05"),EndDate=DateTime.Parse( "2023-02-06"),BookingRate = 390,InsuranceCharge=294,FuelCharge=125 },
+                new Rental {CarID=5,CustomerID=5,StartDate=DateTime.Parse( "2024-01-05"),EndDate=DateTime.Parse( "2023-02-06"),BookingRate = 390,InsuranceCharge=294,FuelCharge=125 },
                 new Rental {CarID=6,CustomerID=6,StartDate=DateTime.Parse( "2024-04-18"),EndDate=DateTime.Parse( "2024-04-27"),BookingRate = 643,InsuranceCharge=465,FuelCharge=144 },
-                new Rental {CarID=7,CustomerID=7,StartDate=DateTime.Parse( "2023-06-20"),EndDate=DateTime.Parse( "2023-07-02"),BookingRate = 215,InsuranceCharge=264,FuelCharge=99},
-                new Rental {CarID=8,CustomerID=8,StartDate=DateTime.Parse( "2023-09-12"),EndDate=DateTime.Parse( "2023-09-16"),BookingRate = 265,InsuranceCharge=145,FuelCharge=100 },
+                new Rental {CarID=7,CustomerID=7,StartDate=DateTime.Parse( "2024-06-20"),EndDate=DateTime.Parse( "2023-07-02"),BookingRate = 215,InsuranceCharge=264,FuelCharge=99},
+                new Rental {CarID=8,CustomerID=8,StartDate=DateTime.Parse( "2024-09-12"),EndDate=DateTime.Parse( "2024-09-16"),BookingRate = 265,InsuranceCharge=145,FuelCharge=100 },
                 new Rental {CarID=9,CustomerID=9,StartDate=DateTime.Parse( "2024-11-25"),EndDate=DateTime.Parse( "2024-12-01"),BookingRate = 415,InsuranceCharge=433,FuelCharge=300},
                 new Rental {CarID=10,CustomerID=10,StartDate=DateTime.Parse( "2024-05-20"),EndDate=DateTime.Parse( "2023-05-23"),BookingRate = 250,InsuranceCharge=244,FuelCharge=267 }
   };

@@ -98,7 +98,7 @@ namespace Car_RentalDb.Areas.Identity.Pages.Account
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
-            [StringLength(20)]
+            [StringLength(25)]
             public string Email { get; set; }
 
             /// <summary>
