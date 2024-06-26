@@ -23,15 +23,26 @@ namespace Car_RentalDb.Controllers
 
         // GET: Cars
         // Added search filter for the model//
-        public async Task<IActionResult> Index(string sortOrder, string searchString)
+        public async Task<IActionResult> Index(string sortOrder,string currentFilter ,string searchString, int? pageNumber)
         {
-            ViewData["CurrentFilter"] = searchString; 
+            
             ViewData["CurrentSort"] = sortOrder; 
             ViewData["ModelSortParm"] = String.IsNullOrEmpty(sortOrder) ? "model_desc" : "model";
             ViewData["YearSortParm"] = sortOrder == "year" ? "year_desc" : "year";
 
+            if (searchString !=null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            ViewData["CurrentFilter"] = searchString;
+
             var cars = from c in _context.Car
-                       select c; 
+                       select c;
+
             
             if (!string.IsNullOrEmpty(searchString))
             {
@@ -40,21 +51,26 @@ namespace Car_RentalDb.Controllers
 
             switch (sortOrder)
             {
+                //The model descending//
                 case "model_desc":
                     cars = cars.OrderByDescending(s => s.Model);
                     break;
+                //Year is going to order by//
                 case "year":
                     cars = cars.OrderBy(s => s.Year);
                     break;
+                // Year is descending//
                 case "year_desc":
                     cars = cars.OrderByDescending(s => s.Year);
                     break;
+                //This is default where model is order by//
                 default:
                     cars = cars.OrderBy(s => s.Model);
                     break;
             }
 
-            return View(await cars.AsNoTracking().ToListAsync());
+            int pageSize = 3;
+            return View(await PaginatedList<Car>.CreateAsync(cars.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 
         // GET: Cars/Details/5
