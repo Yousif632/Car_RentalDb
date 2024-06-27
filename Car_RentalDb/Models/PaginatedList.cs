@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
+//This is a model where the pagination//
 namespace Car_RentalDb.Models
 {
     public class PaginatedList<T> : List<T>

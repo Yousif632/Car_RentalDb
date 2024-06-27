@@ -27,8 +27,8 @@ namespace Car_RentalDb.Controllers
         {
             
             ViewData["CurrentSort"] = sortOrder; 
-            ViewData["ModelSortParm"] = String.IsNullOrEmpty(sortOrder) ? "model_desc" : "model";
-            ViewData["YearSortParm"] = sortOrder == "year" ? "year_desc" : "year";
+            ViewData["ModelSortParm"] = String.IsNullOrEmpty(sortOrder) ? "model_desc" : "";
+            ViewData["YearSortParm"] = sortOrder == "Year" ? "Year_desc" : "Year";
 
             if (searchString !=null)
             {
@@ -44,7 +44,7 @@ namespace Car_RentalDb.Controllers
             var cars = from c in _context.Car
                        select c;
 
-            
+            //This code is for the search filter to work//
             if (!string.IsNullOrEmpty(searchString))
             {
                 cars = cars.Where(s => s.Model.Contains(searchString));

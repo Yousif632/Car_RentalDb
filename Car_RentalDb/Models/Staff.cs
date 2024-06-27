@@ -19,6 +19,7 @@ namespace Car_RentalDb.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
         [Required]
         [Range(000000000, 9999999999, ErrorMessage = "Please enter a phone number with max 10.")]
         [Display(Name = "PhoneNumber")]
