@@ -27,8 +27,8 @@ namespace Car_RentalDb.Controllers
         {
             
             ViewData["CurrentSort"] = sortOrder; 
-            ViewData["ModelSortParm"] = String.IsNullOrEmpty(sortOrder) ? "model_desc" : "";
-            ViewData["YearSortParm"] = sortOrder == "Year" ? "Year_desc" : "Year";
+            ViewData["ModelSortParm"] = String.IsNullOrEmpty(sortOrder) ? "model_desc" : "model";
+            ViewData["YearSortParm"] = sortOrder == "year" ? "year_desc" : "year";
 
             if (searchString !=null)
             {

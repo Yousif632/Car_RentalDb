@@ -22,16 +22,24 @@ namespace Car_RentalDb.Controllers
         }
 
         // GET: Customers
-        public async Task<IActionResult> Index(string sortOrder,string searchString)
+        public async Task<IActionResult> Index(string sortOrder,string searchString, string currentFilter, int? pageNumber)
         {
-            ViewData["CurrentFilter"] = searchString;
+            
             ViewData["CurrentSort"] = sortOrder;
             ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "name";
             ViewData["AddressSortParm"] = sortOrder == "address" ? "address_desc" : "address";
 
+            if (searchString !=null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
             var customers = from c in _context.Customer
                             select c;
-
+            ViewData["CurrentFilter"] = searchString;
             if (!string.IsNullOrEmpty(searchString))
             {
                 customers = customers.Where(s =>s. Name.Contains(searchString));
@@ -53,7 +61,8 @@ namespace Car_RentalDb.Controllers
                     break;
 
             }
-            return View(await customers.ToListAsync());
+            int pageSize = 5;
+            return View(await PaginatedList<Customer>.CreateAsync(customers.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
         
 
