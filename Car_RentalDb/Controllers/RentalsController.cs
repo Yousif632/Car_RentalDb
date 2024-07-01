@@ -37,7 +37,6 @@ namespace Car_RentalDb.Controllers
                 searchBookingRate = currentFilter;
             }
 
-
             ViewData["BookingRate"] = searchBookingRate;
 
             var rentals = from r in _context.Rental
@@ -47,6 +46,7 @@ namespace Car_RentalDb.Controllers
             {
                 rentals = rentals.Where(r => r.BookingRate == searchBookingRate.Value);
             }
+
             switch (sortOrder)
             {
                 case "insurancecharge_desc":
@@ -59,7 +59,7 @@ namespace Car_RentalDb.Controllers
                     rentals = rentals.OrderByDescending(s => s.FuelCharge);
                     break;
                 default:
-                    rentals = rentals.OrderBy(s => s.InsuranceCharge);
+                    rentals = rentals.OrderBy(s => s.Customer);
                     break;
             }
 
@@ -89,8 +89,8 @@ namespace Car_RentalDb.Controllers
         // GET: Rentals/Create
         public IActionResult Create()
         {
-            ViewData["CarID"] = new SelectList(_context.Car, "CarID", "FuelType");
-            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerId", "Address");
+            ViewData["CarID"] = new SelectList(_context.Car, "CarID", "Model");
+            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerId", "Name");
             return View();
         }
 
@@ -107,8 +107,8 @@ namespace Car_RentalDb.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CarID"] = new SelectList(_context.Car, "CarID", "FuelType", rental.CarID);
-            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerId", "Address", rental.CustomerID);
+            ViewData["CarID"] = new SelectList(_context.Car, "CarID", "Model", rental.CarID);
+            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerId", "Name", rental.CustomerID);
             return View(rental);
         }
 
@@ -125,8 +125,8 @@ namespace Car_RentalDb.Controllers
             {
                 return NotFound();
             }
-            ViewData["CarID"] = new SelectList(_context.Car, "CarID", "FuelType", rental.CarID);
-            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerId", "Address", rental.CustomerID);
+            ViewData["CarID"] = new SelectList(_context.Car, "CarID", "Model", rental.CarID);
+            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerId", "Name", rental.CustomerID);
             return View(rental);
         }
 
@@ -162,8 +162,8 @@ namespace Car_RentalDb.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CarID"] = new SelectList(_context.Car, "CarID", "FuelType", rental.CarID);
-            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerId", "Address", rental.CustomerID);
+            ViewData["CarID"] = new SelectList(_context.Car, "CarID", "Model", rental.CarID);
+            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerId", "Name", rental.CustomerID);
             return View(rental);
         }
 
