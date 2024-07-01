@@ -22,19 +22,49 @@ namespace Car_RentalDb.Controllers
         }
 
         // GET: Rentals
-        public async Task<IActionResult> Index(int? searchBookingRate)
+        public async Task<IActionResult> Index(int? searchBookingRate,string sortOrder,int currentFilter,int? pageNumber)
         {
-            IQueryable<Rental> rentals = _context.Rental;
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["InsuranceChargeSortParm"] = String.IsNullOrEmpty(sortOrder) ? "insurancecharge_desc" : "insurancecharge";
+            ViewData["FuelChargeSortParm"] = sortOrder == "fuelcharge" ? "fuelcharge_desc" : "fuelcharge";
+
+            if (searchBookingRate != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchBookingRate = currentFilter;
+            }
+
 
             ViewData["BookingRate"] = searchBookingRate;
-           
+
+            var rentals = from r in _context.Rental
+                         select r;
 
             if (searchBookingRate.HasValue)
             {
                 rentals = rentals.Where(r => r.BookingRate == searchBookingRate.Value);
             }
+            switch (sortOrder)
+            {
+                case "insurancecharge_desc":
+                    rentals = rentals.OrderByDescending(s => s.InsuranceCharge);
+                    break;
+                case "fuelcharge":
+                    rentals = rentals.OrderBy(s => s.FuelCharge);
+                    break;
+                case "fuelcharge_desc":
+                    rentals = rentals.OrderByDescending(s => s.FuelCharge);
+                    break;
+                default:
+                    rentals = rentals.OrderBy(s => s.InsuranceCharge);
+                    break;
+            }
 
-            return View(await rentals.ToListAsync());
+            int pageSize = 5;
+            return View(await PaginatedList<Rental>.CreateAsync(rentals.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
         // GET: Rentals/Details/5
         public async Task<IActionResult> Details(int? id)

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Car_RentalDb.Models.Rental>
+﻿@model PaginatedList<Car_RentalDb.Models.Rental>
 
 @{
     ViewData["Title"] = "Rentals";
@@ -19,25 +19,25 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.StartDate)
+                StartDate
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EndDate)
+                EndDate
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BookingRate)
+                BookingRate
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.InsuranceCharge)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["InsuranceChargeSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">InsuranceCharge</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FuelCharge)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["FuelChargeSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">FuelCharge</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Car)
+                CarId
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Customer)
+                CustomerI
             </th>
             <th></th>
         </tr>
@@ -75,3 +75,22 @@
 }
     </tbody>
 </table>
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>
