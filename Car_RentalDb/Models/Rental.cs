@@ -9,27 +9,24 @@ namespace Car_RentalDb.Models
         public int CustomerID { get; set; }
 
         [Display(Name = "Start date")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
        
-
         public DateTime StartDate { get; set; }
         
 
         [Display(Name = "End date")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-       
-        public DateTime EndDate { get; set; }
 
+        public DateTime EndDate { get; set; }
+        [Display(Name = "Booking Rate")]
         [Range(100, 1000)]
         [DataType(DataType.Currency)]
         public int BookingRate { get; set; }
 
+        [Display(Name = "Insurance Charge")]
         [Range(100, 1000)]
         [DataType(DataType.Currency)]
         public int InsuranceCharge { get; set; }
 
+        [Display(Name = "Fuel Charge")]
         [Range(0, 350)]
         [DataType(DataType.Currency)]
         public int FuelCharge { get; set; }
