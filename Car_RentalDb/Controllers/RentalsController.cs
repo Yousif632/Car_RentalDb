@@ -22,31 +22,24 @@ namespace Car_RentalDb.Controllers
         }
 
         // GET: Rentals
-        public async Task<IActionResult> Index(int? searchBookingRate,string sortOrder,int currentFilter,int? pageNumber)
+        public async Task<IActionResult> Index(int? searchBookingRate, string sortOrder, int? pageNumber)
         {
             ViewData["CurrentSort"] = sortOrder;
-            ViewData["InsuranceChargeSortParm"] = String.IsNullOrEmpty(sortOrder) ? "insurancecharge_desc" : "insurancecharge";
+            ViewData["InsuranceChargeSortParm"] = String.IsNullOrEmpty(sortOrder) ? "insurancecharge_desc" : "";
             ViewData["FuelChargeSortParm"] = sortOrder == "fuelcharge" ? "fuelcharge_desc" : "fuelcharge";
-
-            if (searchBookingRate != null)
-            {
-                pageNumber = 1;
-            }
-            else
-            {
-                searchBookingRate = currentFilter;
-            }
 
             ViewData["BookingRate"] = searchBookingRate;
 
             var rentals = from r in _context.Rental
-                         select r;
+                          select r;
 
+            // Apply search filter
             if (searchBookingRate.HasValue)
             {
                 rentals = rentals.Where(r => r.BookingRate == searchBookingRate.Value);
             }
 
+            // Apply sorting
             switch (sortOrder)
             {
                 case "insurancecharge_desc":
@@ -59,13 +52,17 @@ namespace Car_RentalDb.Controllers
                     rentals = rentals.OrderByDescending(s => s.FuelCharge);
                     break;
                 default:
-                    rentals = rentals.OrderBy(s => s.Customer);
+                    rentals = rentals.OrderBy(s => s.Customer); // Default sorting
                     break;
             }
 
             int pageSize = 5;
-            return View(await PaginatedList<Rental>.CreateAsync(rentals.AsNoTracking(), pageNumber ?? 1, pageSize));
+            pageNumber ??= 1; // Ensure pageNumber has a value
+
+            // Return the paginated view
+            return View(await PaginatedList<Rental>.CreateAsync(rentals.AsNoTracking(), pageNumber.Value, pageSize));
         }
+
         // GET: Rentals/Details/5
         public async Task<IActionResult> Details(int? id)
         {
