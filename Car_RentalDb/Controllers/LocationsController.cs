@@ -41,6 +41,7 @@ namespace Car_RentalDb.Controllers
 
             var locations = from l in _context.Location
                        select l;
+
             if (!string.IsNullOrEmpty(searchString))
             {
                 locations = locations.Where(s => s.Address.Contains(searchString));

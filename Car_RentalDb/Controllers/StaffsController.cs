@@ -22,16 +22,49 @@ namespace Car_RentalDb.Controllers
         }
 
         // GET: Staffs
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index(string searchString,string sortOrder,string currentFilter,int? pageNumber)
 
         {
-            IQueryable<Staff> staffs = _context.Staff;
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["LastNameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "lastname_desc" : "lastname";
+            ViewData["PhoneSortParm"] = sortOrder == "phone" ? "phone_desc" : "phone";
+
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewData["CurrentFilter"] = searchString;
+
+            var staffs = from s in _context.Staff
+                        select s;
+
             if (!string.IsNullOrEmpty(searchString))
             {
                 staffs = staffs.Where(s => s.Name.Contains(searchString));
             }
+            switch (sortOrder)
+            {
+                case "lastname_desc":
+                    staffs = staffs.OrderByDescending(s => s.LastName);
+                    break;
+                case "phone":
+                    staffs = staffs.OrderBy(s => s.Phone);
+                    break;
+                case "phone_desc":
+                    staffs = staffs.OrderByDescending(s => s.Phone);
+                    break;
+                default:
+                    staffs = staffs.OrderBy(s => s.LastName);
+                    break;
+            }
 
-            return View(await staffs.ToListAsync());
+            int pageSize = 5;
+            return View(await PaginatedList<Staff>.CreateAsync(staffs.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 
 

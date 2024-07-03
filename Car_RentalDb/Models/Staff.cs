@@ -9,7 +9,7 @@ namespace Car_RentalDb.Models
         [Required]
         [StringLength(10)]
         public string Name { get; set; }
-
+        [Display(Name = "Last Name")]
         [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]
         [Required]
         [StringLength(10)]
