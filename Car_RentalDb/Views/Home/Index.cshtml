@@ -12,21 +12,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Display Example</title>
-    <style>
-        /* CSS to move the image */
-        .image-move {
-            position: relative;
-            left: -30px; /* Move left */
-            top: 20px; /* Move down */
-            /* Adjust these values to move the image as needed */
-        }
+
     </style>
 </head>
-
 <body>
-    <a class="nav-link text-light" asp-area="" asp-controller="Rentals" asp-action="Index" >
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmg0Eky-gEbiQgR9GkhIdn_JJE0rZ1d03wvQ&s" alt="A description of the remote image" width="350" height="250" class="image-move">
-    </a>
-    <p>Click on the image to rent the vehicle</p>
-</body>
+    <div class="image-container">
+        <img src="https://cdn.discordapp.com/attachments/883269450701357077/1255875309555814461/IMG_0936.png?ex=6697c506&is=66967386&hm=ab92c8f3c9d64ff2e7c117459817a34e5f5c55e77ddf55b91b32baf5d526841e&" alt="A description of the remote image" class="image-move" />
+    </div>
+    <div class="content">
+        <h1>Toyota Hilux</h1>
+        <a class="btn btn-primary btn-sm" href="/Rentals/Index">Book now</a>
 
+    </div>
+</body>
+</html>
